@@ -5,10 +5,12 @@ ENV ARCH amd64
 ENV DIST stable
 ENV MIRROR http://http.debian.net
 
-RUN apt-get update && apt-get install -y \\
-  dnsmasq \
-  iptables \
-  wget
+RUN export DEBIAN_FRONTEND=noninteractive && \
+  apt-get update && \
+  apt-get install -y \
+    dnsmasq \
+    iptables \
+    wget
 
 ADD pipework /usr/local/bin/
 
