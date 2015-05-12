@@ -12,8 +12,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     iptables \
     wget
 
-ADD pipework /usr/local/bin/
-
 RUN mkdir -p /srv/tftp
 WORKDIR /srv/tftp
 
@@ -21,5 +19,6 @@ RUN wget $MIRROR/debian/dists/$DIST/main/installer-$ARCH/current/images/netboot/
 RUN tar xvzf netboot.tar.gz
 RUN rm netboot.tar.gz
 
-ADD setup-iptables /usr/local/bin
+ADD pipework /usr/local/bin/
+ADD setup-iptables /usr/local/bin/
 CMD setup-iptables
